@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "author": "Uri Shaked",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-st-nucleo-l031k6", "id": "nucleo", "top": 10.81, "left": 3.55, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 54.2,
+      "left": -96,
+      "attrs": { "color": "green", "bounce": "0", "key": "i" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 138.35,
+      "left": -153.6,
+      "attrs": { "value": "1000" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": 6, "left": -169, "attrs": { "color": "red" } }
+  ],
+  "connections": [
+    [ "$serialMonitor:TX", "nucleo:VCP_RX", "", [] ],
+    [ "$serialMonitor:RX", "nucleo:VCP_TX", "", [] ],
+    [ "nucleo:GND.1", "btn1:1.r", "black", [ "h0" ] ],
+    [ "r1:1", "led1:C", "green", [ "v0" ] ],
+    [ "r1:2", "nucleo:D3", "green", [ "v0", "h66", "v-48", "h19.2" ] ],
+    [ "btn1:2.r", "nucleo:D2", "green", [ "h0" ] ],
+    [ "led1:A", "nucleo:GND.1", "green", [ "v0", "h124.8", "v19.2" ] ]
+  ],
+  "dependencies": {}
+}
